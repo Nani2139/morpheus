@@ -14,16 +14,20 @@ class Question(models.Model):
         ('text', 'Text'),
         ('dropdown', 'Dropdown'),
         ('checkbox', 'Checkbox'),
-        # Future types will be added here.
     ]
-
     form = models.ForeignKey(Form, related_name='questions', on_delete=models.CASCADE)
     text = models.CharField(max_length=500)
     question_type = models.CharField(max_length=20, choices=QUESTION_TYPES)
-    order = models.PositiveIntegerField()
+    order = models.IntegerField()
 
     def __str__(self):
         return f"{self.order}. {self.text}"
+
+    def save(self, *args, **kwargs):
+        if not self.order:
+            last_order = Question.objects.filter(form=self.form).aggregate(models.Max('order'))['order__max'] or 0
+            self.order = last_order + 1
+        super().save(*args, **kwargs)
 
 class Option(models.Model):
     question = models.ForeignKey(Question, related_name='options', on_delete=models.CASCADE)
@@ -43,7 +47,7 @@ class Answer(models.Model):
     response = models.ForeignKey(Response, related_name='answers', on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
-    # For text responses
+   
     text = models.TextField(blank=True, null=True)
 
     # For single choice -> dropdown
