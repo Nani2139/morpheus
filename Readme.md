@@ -13,10 +13,8 @@
   - [Prerequisites](#prerequisites)
   - [Setup Instructions](#setup-instructions)
 - [🔐 Authentication](#-authentication)
-- [📄 API Documentation](#-api-documentation)
-  - [Swagger/OpenAPI](#swaggeropenapi)
-  - [Postman Collections](#postman-collections)
 - [📦 Usage](#-usage)
+- [🎓 Key Learnings](#-key-learnings)
 - [🔮 Future Enhancements](#-future-enhancements)
 
 
@@ -163,52 +161,6 @@ This project utilizes **Token Authentication** to secure its API endpoints. Here
 *Note: Ensure that you include the obtained access token in the `Authorization` header as follows:*
 
 
-## 📄 API Documentation
-
-Comprehensive documentation of the **Form Builder API** is available through both **Swagger/OpenAPI** and **Postman Collections**. These tools provide interactive interfaces for testing and understanding the API endpoints.
-
-### Swagger/OpenAPI
-
-**Swagger** offers an interactive web interface to explore and test your API.
-
-1. **Access Swagger UI:**
-
-   Open your browser and navigate to:
-
-
-2. **Features:**
-
-- **Interactive Testing:** Execute API requests directly from the browser.
-- **Endpoint Details:** View information about each endpoint, including parameters, responses, and authentication requirements.
-- **Search Functionality:** Quickly find specific endpoints.
-
-### Postman Collections
-
-**Postman** allows you to create, organize, and share collections of API requests, facilitating easier testing and collaboration.
-
-1. **Import the Collection:**
-
-- **From a JSON File:**
-  - Open Postman.
-  - Click on the **"Import"** button.
-  - Select the exported `FormBuilderAPI.postman_collection.json` file.
-- **From a GitHub Repository:**
-  - Use the **"Import from Link"** option and provide the raw URL of the Postman Collection JSON file hosted in your repository.
-
-2. **Using the Collection:**
-
-- **Organized Requests:** Access all API endpoints grouped logically.
-- **Environment Variables:** Manage different environments (e.g., Development, Production) with ease.
-- **Sharing:** Share collections with team members for synchronized testing.
-
-3. **Exporting the Collection:**
-
-- **Right-Click on the Collection:**
-  - In the left sidebar, right-click on **"Form Builder API"**.
-- **Select "Export":**
-  - Choose **"Collection v2.1 (recommended)"** format.
-  - Save the JSON file for sharing or backup purposes.
-
 ## 📦 Usage
 
 Here's how to interact with the **Form Builder API**:
@@ -241,6 +193,19 @@ Navigate to `http://127.0.0.1:8000/admin/` and log in with your superuser creden
        }
    ]
 }
+```
+## 🎓 Key Learnings
+1. **Token-Based Authentication with Django REST Framework:**
+   - Implemented secure token authentication to protect API endpoints, ensuring that only authorized users can access sensitive functionalities.
+   - Managed token generation, refreshing, and validation using `djangorestframework-simplejwt`, enhancing the security and scalability of the authentication system.
+
+2. **Comprehensive API Documentation:**
+   - Utilized `drf-yasg` to generate interactive Swagger/OpenAPI documentation, providing clear and accessible information for developers to understand and test API endpoints.
+   - Created organized Postman Collections to facilitate efficient API testing.
+   
+3. **Backend Development and Data Analytics:**
+   - Designed and developed a robust backend system with Django models, serializers, and viewsets to handle dynamic form creation, user responses, and data storage.
+   - Developed custom analytics endpoints to process and visualize response data, offering valuable insights and enhancing the decision-making capabilities for administrators.
 
 ## 🔮 Future Enhancements
 
